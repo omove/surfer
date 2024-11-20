@@ -59,33 +59,44 @@ function getReleaseMarName(releaseInfo: ReleaseInfo): string | undefined {
 
   if ((process as any).surferPlatform == 'win32') {
     if (compatMode == 'x86_64') {
-      return releaseInfo.archives['windows-compat']
+      releaseInfo.archives['windows-compat']
+      return
     }
     else if (compatMode == 'x86_64-v3') {
-      return releaseInfo.archives['windows']
+      releaseInfo.archives['windows']
+      return
     }
     else if (compatMode == 'aarch64') {
-      return releaseInfo.archives['windows-arm64']
+      releaseInfo.archives['windows-arm64']
+      return
     }
+    return
   }
   if ((process as any).surferPlatform == 'darwin') {
     if (compatMode == 'x86_64') {
-      return releaseInfo.archives['macos-x86_64']
+      releaseInfo.archives['macos-x86_64']
+      return
     }
     else if (compatMode == 'aarch64') {
-      return releaseInfo.archives['macos-aarch64']
+      releaseInfo.archives['macos-aarch64']
+      return
     }
+    return
   }
   if ((process as any).surferPlatform == 'linux') {
     if (compatMode == 'x86_64') {
-      return releaseInfo.archives['linux-compat']
+      releaseInfo.archives['linux-compat']
+      return
     }
     else if (compatMode == 'x86_64-v3') {
-      return releaseInfo.archives['linux']
+      releaseInfo.archives['linux']
+      return
     }
     else if (compatMode == 'aarch64') {
-      return releaseInfo.archives['linux-aarch64'] 
+      releaseInfo.archives['linux-aarch64']
+      return
     }
+    return
   }
 }
 
