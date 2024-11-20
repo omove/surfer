@@ -57,42 +57,34 @@ function getReleaseMarName(releaseInfo: ReleaseInfo): string | undefined {
     return
   }
 
-  switch ((process as any).surferPlatform) {
-    case 'win32': {
-      switch (compatMode) {
-        case 'x86_64': {
-          releaseInfo.archives['windows-compat']
-        }
-        case 'x86_64-v3': {
-          releaseInfo.archives['windows']
-        }
-        case 'aarch64': {
-          releaseInfo.archives['windows-arm64'] 
-        }
-      }
+  if ((process as any).surferPlatform == 'win32') {
+    if (compatMode == 'x86_64') {
+      releaseInfo.archives['windows-compat']
     }
-    case 'darwin': {
-      switch (compatMode) {
-        case 'x86_64': {
-          releaseInfo.archives['macos-x86_64']
-        }
-        case 'aarch64': {
-          releaseInfo.archives['macos-aarch64'] 
-        }
-      }
+    else if (compatMode == 'x86_64-v3') {
+      releaseInfo.archives['windows']
     }
-    case 'linux': {
-      switch (compatMode) {
-        case 'x86_64': {
-          releaseInfo.archives['linux-compat']
-        }
-        case 'x86_64-v3': {
-          releaseInfo.archives['linux']
-        }
-        case 'aarch64': {
-          releaseInfo.archives['linux-aarch64'] 
-        }
-      }
+    else if (compatMode == 'aarch64') {
+      releaseInfo.archives['windows-arm64']
+    }
+  }
+  if ((process as any).surferPlatform == 'darwin') {
+    if (compatMode == 'x86_64') {
+      releaseInfo.archives['macos-x86_64']
+    }
+    else if (compatMode == 'aarch64') {
+      releaseInfo.archives['macos-aarch64']
+    }
+  }
+  if ((process as any).surferPlatform == 'linux') {
+    if (compatMode == 'x86_64') {
+      releaseInfo.archives['linux-compat']
+    }
+    else if (compatMode == 'x86_64-v3') {
+      releaseInfo.archives['linux']
+    }
+    else if (compatMode == 'aarch64') {
+      releaseInfo.archives['linux-aarch64'] 
     }
   }
 }
