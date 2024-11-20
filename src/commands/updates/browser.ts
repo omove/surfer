@@ -57,47 +57,38 @@ function getReleaseMarName(releaseInfo: ReleaseInfo): string | undefined {
     return
   }
 
+  let releaseMarName;
   if ((process as any).surferPlatform == 'win32') {
     if (compatMode == 'x86_64') {
-      releaseInfo.archives['windows-compat']
-      return
+      releaseMarName = releaseInfo.archives['windows-compat']
     }
     else if (compatMode == 'x86_64-v3') {
-      releaseInfo.archives['windows']
-      return
+      releaseMarName = releaseInfo.archives['windows']
     }
     else if (compatMode == 'aarch64') {
-      releaseInfo.archives['windows-arm64']
-      return
+      releaseMarName = releaseInfo.archives['windows-arm64']
     }
-    return
   }
   if ((process as any).surferPlatform == 'darwin') {
     if (compatMode == 'x86_64') {
-      releaseInfo.archives['macos-x86_64']
-      return
+      releaseMarName = releaseInfo.archives['macos-x86_64']
     }
     else if (compatMode == 'aarch64') {
-      releaseInfo.archives['macos-aarch64']
-      return
+      releaseMarName = releaseInfo.archives['macos-aarch64']
     }
-    return
   }
   if ((process as any).surferPlatform == 'linux') {
     if (compatMode == 'x86_64') {
-      releaseInfo.archives['linux-compat']
-      return
+      releaseMarName = releaseInfo.archives['linux-compat']
     }
     else if (compatMode == 'x86_64-v3') {
-      releaseInfo.archives['linux']
-      return
+      releaseMarName = releaseInfo.archives['linux']
     }
     else if (compatMode == 'aarch64') {
-      releaseInfo.archives['linux-aarch64']
-      return
+      releaseMarName = releaseInfo.archives['linux-aarch64']
     }
-    return
   }
+  return releaseMarName;
 }
 
 function getReleaseMarURL(releaseInfo: ReleaseInfo) {
