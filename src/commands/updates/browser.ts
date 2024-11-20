@@ -88,7 +88,7 @@ function getReleaseMarName(releaseInfo: ReleaseInfo): string | undefined {
       releaseMarName = releaseInfo.archives['linux-aarch64']
     }
   }
-  return releaseMarName;
+  return releaseMarName
 }
 
 function getReleaseMarURL(releaseInfo: ReleaseInfo) {
